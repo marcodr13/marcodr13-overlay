@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="dev-python/pygtk
+		 dev-python/pyxdg
 		 dev-python/gnome-keyring-python
 		 sys-fs/encfs"
 
