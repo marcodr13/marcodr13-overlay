@@ -1,0 +1,8 @@
+1. Create a MySQL database if you haven't already one.
+2. Navigate to your gallery. Example: if you uploaded in a subfolder named
+   "zenphoto" navigate to www.yoursite.org/zenphoto/. Setup.php will run. (If
+   it somehow does not, please navigate directly to 
+   www.yoursite.org/zenphoto/zp-core/setup.php)
+3. Enter the MySQL credentials and make sure everything checks out.
+4. Then click GO!
+5. ENJOY!
