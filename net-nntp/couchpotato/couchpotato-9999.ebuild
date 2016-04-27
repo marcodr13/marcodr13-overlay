@@ -2,14 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
+EAPI=5
 
-PYTHON_DEPEND="2:2.6"
+# PYTHON_DEPEND="2:2.6"
+PYTHON_COMPAT=(python2_6 python2_7)
 PYTHON_USE_WITH="sqlite"
 
 EGIT_REPO_URI="https://github.com/RuudBurger/CouchPotatoServer.git"
 
-inherit eutils user git-2 python
+inherit eutils user git-2 python-r1 systemd
 
 DESCRIPTION="CouchPotatoServer (CPS) V2 is an automatic NZB and torrent downloader for movies"
 HOMEPAGE="https://github.com/RuudBurger/CouchPotatoServer#readme"
@@ -19,10 +20,13 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
+RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]
+    dev-python/pyopenssl[${PYTHON_USEDEP}]"
+
 pkg_setup() {
-	# Control PYTHON_USE_WITH
-	python_set_active_version 2
-	python_pkg_setup
+#	# Control PYTHON_USE_WITH
+#	python_set_active_version 2
+#	python_pkg_setup
 
 	# Create couchpotato group
 	enewgroup ${PN}
@@ -35,10 +39,11 @@ src_install() {
 
 	newconfd "${FILESDIR}/${PN}.conf" ${PN}
 	newinitd "${FILESDIR}/${PN}.init" ${PN}
+	systemd_dounit "${FILESDIR}"/couchpotato.service
 
 	# Location of data files
-	keepdir /var/${PN}
-	fowners -R ${PN}:${PN} /var/${PN}
+	keepdir /var/lib/${PN}
+	fowners -R ${PN}:${PN} /var/lib/${PN}
 
 	insinto /etc/${PN}
 	insopts -m0660 -o ${PN} -g ${PN}
@@ -64,14 +69,12 @@ pkg_postinst() {
 	   rm -Rf "/usr/share/${PN}/.git"
 	fi
 
-	python_mod_optimize /usr/share/${PN}
-
 	elog "Couchpotato has been installed with data directories in /var/${PN}"
 	elog
 	elog "New user/group ${PN}/${PN} has been created"
 	elog
 	elog "Config file is located in /etc/${PN}/${PN}.ini"
-	elog "Note: Log files are located in /var/${PN}/logs"
+	elog "Note: Log files are located in /var/lib/${PN}/logs"
 	elog
 	elog "Please configure /etc/conf.d/${PN} before starting as daemon!"
 	elog
@@ -81,6 +84,3 @@ pkg_postinst() {
 	elog
 }
 
-pkg_postrm() {
-	python_mod_cleanup /usr/share/${PN}
-}

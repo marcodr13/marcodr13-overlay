@@ -1,0 +1,13 @@
+[Unit]
+Description=CouchPotato application instance
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/conf.d/couchpotato
+ExecStart=/usr/bin/python2 /usr/share/couchpotato/CouchPotato.py --data_dir ${VAR_DIR} --config_file ${CONFIG_FILE}
+Type=simple
+User=couchpotato
+Group=couchpotato
+
+[Install]
+WantedBy=multi-user.target
