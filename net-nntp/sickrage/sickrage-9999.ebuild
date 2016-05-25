@@ -8,9 +8,9 @@ PYTHON_COMPAT=( python2_6 python2_7 )
 PYTHON_REQ_USE="sqlite"
 
 EGIT_REPO_URI="https://github.com/SickRage/SickRage.git"
-EGIT_HAS_SUBMODULES="true"
+#EGIT_HAS_SUBMODULES="true"
 
-inherit eutils user git-2 python-single-r1
+inherit eutils user git-r3 python-single-r1
 
 DESCRIPTION="SickRage - Searches TheTVDB and TVRage for shows"
 HOMEPAGE="http://www.sickrage.tv/"
