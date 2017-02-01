@@ -1,0 +1,12 @@
+[Unit]
+Description=Monero Daemon
+After=network.target
+
+[Service]
+User=monero
+EnvironmentFile=/etc/conf.d/monerod
+ExecStart=/usr/bin/monerod --no-console $MONERO_OPTS
+ExecReload=/bin/kill -INT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
