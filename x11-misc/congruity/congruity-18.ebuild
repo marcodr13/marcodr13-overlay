@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=4
-SUPPORT_PYTHON_ABIS="1"
-RESTRICT_PYTHON_ABIS="3.*"
+EAPI=5
+PYTHON_COMPAT=( python2_7 )
 
-inherit python
+inherit python-single-r1
 
 DESCRIPTION="GUI application for programming Logitech Harmony remote controls"
 HOMEPAGE="http://sourceforge.net/projects/congruity/"
@@ -21,7 +20,7 @@ DEPEND="dev-python/wxpython:2.8
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	python_convert_shebangs -r 2 .
+	python_fix_shebang .
 }
 
 src_install() {

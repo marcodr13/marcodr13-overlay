@@ -3,10 +3,9 @@
 # $Header: $
 
 EAPI=5
-PYTHON_DEPEND="*"
-SUPPORT_PYTHON_ABIS="1"
+PYTHON_COMPAT=( python2_7 )
 
-inherit distutils perl-app
+inherit distutils-r1 perl-app
 
 MY_PN="concordance"
 MY_P="${MY_PN}-${PV}"
@@ -65,7 +64,7 @@ src_compile() {
 
 	if use python; then
 		cd "${S}/bindings/python"
-		distutils_src_compile
+		distutils-r1_src_compile
 	fi
 }
 
@@ -90,6 +89,6 @@ src_install() {
 
 	if use python; then
 		cd "${S}/bindings/python"
-		distutils_src_install
+		distutils-r1_src_install
 	fi
 }
