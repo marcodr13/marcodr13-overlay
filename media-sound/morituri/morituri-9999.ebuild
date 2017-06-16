@@ -4,15 +4,14 @@
 
 EAPI="5"
 
-PYTHON_COMPAT="python2_7"
+PYTHON_COMPAT=(python2_7)
 
-inherit bash-completion-r1 python-single-r1 eutils autotools git-2
+inherit bash-completion-r1 python-single-r1 eutils autotools git-r3
 
 DESCRIPTION="A CD ripper aiming for accuracy over speed."
 HOMEPAGE="http://thomas.apestaart.org/morituri/trac/"
 
 EGIT_REPO_URI="git://github.com/thomasvs/morituri.git"
-EGIT_HAS_SUBMODULES=1
 
 LICENSE="GPL-3"
 SLOT="0"
