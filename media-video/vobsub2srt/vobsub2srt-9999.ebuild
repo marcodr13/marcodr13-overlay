@@ -5,11 +5,11 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI="6"
 
-EGIT_REPO_URI="git://github.com/ruediger/VobSub2SRT.git"
+EGIT_REPO_URI="https://github.com/ruediger/VobSub2SRT.git"
 
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 IUSE=""
 
