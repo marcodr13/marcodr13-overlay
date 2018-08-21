@@ -19,7 +19,7 @@ IUSE=""
 if [[ ${PV} != *9999* ]]; then
     MY_P="${PV:0:4}.${PV:4:2}.${PV:6:2}-${PV:9:1}"
 
-	SRC_URI="https://github.com/SickRage/SickRage/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/SickRage/SickRage/archive/v${MY_P}.tar.gz -> ${P}.tar.gz"
     KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/SickRage-${MY_P}"
 #    DOCS=( RELEASE_NOTES )
